@@ -4,6 +4,7 @@
 <table class="table table-striped table-hover">
     <thead class="table-primary">
         <tr>
+            <th>ISBN</th>
             <th>Title</th>
             <th>Author</th>
             <th>Year</th>
@@ -14,6 +15,7 @@
     <tbody>
         {% for book in books %}
         <tr>
+            <td>{{ book.isbn }}</td>
             <td>{{ book.title }}</td>
             <td>{{ book.author }}</td>
             <td>{{ book.year }}</td>

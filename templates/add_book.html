@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Add Book</h2>
-<form method="post" class="row g-3">
+<form method="post" class="row g-3" id="book-form">
+    <div class="col-md-4">
+        <label for="isbn" class="form-label">ISBN</label>
+        <div class="input-group">
+            <input type="text" class="form-control" id="isbn" name="isbn">
+            <button class="btn btn-outline-secondary" type="button" id="fetch-btn">Fetch</button>
+        </div>
+    </div>
     <div class="col-md-6">
         <label for="title" class="form-label">Title</label>
         <input type="text" class="form-control" id="title" name="title" required>
@@ -23,4 +30,19 @@
         <a href="/" class="btn btn-secondary">Cancel</a>
     </div>
 </form>
+<script>
+document.getElementById('fetch-btn').onclick = function() {
+        const isbn = document.getElementById('isbn').value.trim();
+        if (!isbn) return;
+        fetch(`/api/fetch_book_info?isbn=${isbn}`)
+            .then(r => r.json())
+            .then(data => {
+                if (data.error) { alert(data.error); return; }
+                document.getElementById('title').value = data.title || '';
+                document.getElementById('author').value = data.author || '';
+                document.getElementById('year').value = data.year || '';
+                document.getElementById('description').value = data.description || '';
+            });
+};
+</script>
 {% endblock %}
