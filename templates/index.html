@@ -5,7 +5,7 @@
     <thead class="table-primary">
         <tr>
             <th>ISBN</th>
-            <th>Title</th>
+            <th style="white-space:nowrap;">Title</th>
             <th>Author</th>
             <th>Year</th>
             <th>Description</th>
@@ -16,10 +16,17 @@
         {% for book in books %}
         <tr>
             <td>{{ book.isbn }}</td>
-            <td>{{ book.title }}</td>
-            <td>{{ book.author }}</td>
+            <td colspan="2" class="book-title-author">
+                <span class="book-title">{{ book.title }}</span>
+                <span class="book-author">{{ book.author }}</span>
+            </td>
             <td>{{ book.year }}</td>
-            <td>{{ book.description }}</td>
+            <td>
+                <div class="desc-collapsible">
+                    <button class="btn btn-link p-0 desc-toggle" type="button" onclick="toggleDesc(this)">Show</button>
+                    <div class="desc-content" style="display:none; white-space:pre-line;">{{ book.description }}</div>
+                </div>
+            </td>
             <td>
                 <a href="/edit/{{ book.id }}" class="btn btn-sm btn-warning">Edit</a>
                 <form action="/delete/{{ book.id }}" method="post" style="display:inline;">
@@ -33,4 +40,16 @@
 {% if not books %}
 <p class="text-muted">No books found. <a href="/add">Add your first book</a>.</p>
 {% endif %}
+<script>
+function toggleDesc(btn) {
+    const content = btn.parentElement.querySelector('.desc-content');
+    if (content.style.display === 'none') {
+        content.style.display = 'block';
+        btn.textContent = 'Hide';
+    } else {
+        content.style.display = 'none';
+        btn.textContent = 'Show';
+    }
+}
+</script>
 {% endblock %}
