@@ -4,8 +4,8 @@ body {
     text-emphasis-color: #fff;
 }
 .navbar {
-    background: #232323;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    background: #232323 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
     color: #f5f6fa;
 }
 .table {
