@@ -1,37 +1,75 @@
-.book-author {
-    padding-left: 2em;
-    min-width: 120px;
-}
-.author-item {
-    white-space: nowrap;
-}
 body {
-    background-color: #f8f9fa;
+    background-color: #2f2f2f;
+    color: #f5f6fa;
+    text-emphasis-color: #fff;
 }
 .navbar {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+    background: #232323;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    color: #f5f6fa;
 }
 .table {
-    background: #fff;
+    background: #232323;
     border-radius: 8px;
     overflow: hidden;
     table-layout: auto;
+    color: #f5f6fa;
+    border: 1px solid #393939;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #232323;
+}
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #2f2f2f;
+}
+.table-hover tbody tr:hover {
+    background-color: #393939;
+}
+.table-primary {
+    background-color: #181818 !important;
+    color: #f5f6fa !important;
+    border-bottom: 2px solid #393939;
 }
 
-.book-title {
-    font-weight: 500;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: visible;
+.table th,td {
+    background: #1c1c1c !important;
+    color: #f5f6fa !important;
 }
 
+
+
+th, td {
+    background: transparent !important;
+    color: #f5f6fa;
+}
+    
+.btn-primary, .navbar-primary {
+    background: linear-gradient(90deg, #0056b3 60%, #00aaff 100%);
+    border: none;
+    color: #f5f6fa;
+}
+.btn-warning {
+    color: #f5f6fa;
+    background: #f0ad4e;
+    border: none;
+}
+.btn-danger {
+    color: #f5f6fa;
+    background: #d9534f;
+    border: none;
+}
+.btn-secondary {
+    background: #393939;
+    color: #f5f6fa;
+    border: none;
+}
 .desc-collapsible {
     max-width: 600px;
     word-break: break-word;
 }
 .desc-toggle {
     font-size: 0.95em;
-    color: #007bff;
+    color: #4dc3ff;
     background: none;
     border: none;
     cursor: pointer;
@@ -39,18 +77,28 @@ body {
 }
 .desc-content {
     margin-top: 0.5em;
-    background: #f8f9fa;
+    background: #262626;
+    color: #f5f6fa;
     padding: 0.5em;
     border-radius: 4px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.15);
 }
-.btn-primary, .navbar-primary {
-    background: linear-gradient(90deg, #007bff 60%, #00c6ff 100%);
-    border: none;
+.book-title {
+    color: #f5f6fa;
 }
-.btn-warning {
-    color: #fff;
+.book-author {
+    color: #f5f6fa;
 }
-.btn-danger {
-    color: #fff;
+input, textarea, select, .form-control {
+    background: #262626 !important;
+    color: #f5f6fa !important;
+    border: 1px solid #444950 !important;
+}
+label, .form-label {
+    color: #f5f6fa !important;
+}
+form {
+    background: #2f2f2f;
+    border-radius: 8px;
+    padding: 1em;
 }
