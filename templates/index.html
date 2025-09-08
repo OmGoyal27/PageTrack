@@ -16,10 +16,8 @@
         {% for book in books %}
         <tr>
             <td>{{ book.isbn }}</td>
-            <td colspan="2" class="book-title-author">
-                <span class="book-title">{{ book.title }}</span>
-                <span class="book-author">{{ book.author }}</span>
-            </td>
+            <td class="book-title">{{ book.title }}</td>
+            <td class="book-author">{% for a in book.author.split(',') %}<div class="author-item">{{ a.strip() }}</div>{% endfor %}</td>
             <td>{{ book.year }}</td>
             <td>
                 <div class="desc-collapsible">

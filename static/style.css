@@ -1,3 +1,10 @@
+.book-author {
+    padding-left: 2em;
+    min-width: 120px;
+}
+.author-item {
+    white-space: nowrap;
+}
 body {
     background-color: #f8f9fa;
 }
