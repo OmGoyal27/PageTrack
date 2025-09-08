@@ -9,22 +9,6 @@
             <button class="btn btn-outline-secondary" type="button" id="fetch-btn">Fetch</button>
         </div>
     </div>
-</form>
-<script>
-document.getElementById('fetch-btn').onclick = function() {
-        const isbn = document.getElementById('isbn').value.trim();
-        if (!isbn) return;
-        fetch(`/api/fetch_book_info?isbn=${isbn}`)
-            .then(r => r.json())
-            .then(data => {
-                if (data.error) { alert(data.error); return; }
-                document.getElementById('title').value = data.title || '';
-                document.getElementById('author').value = data.author || '';
-                document.getElementById('year').value = data.year || '';
-                document.getElementById('description').value = data.description || '';
-            });
-};
-</script>
     <div class="col-md-6">
         <label for="title" class="form-label">Title</label>
         <input type="text" class="form-control" id="title" name="title" value="{{ book.title }}" required>
@@ -46,4 +30,19 @@ document.getElementById('fetch-btn').onclick = function() {
         <a href="/" class="btn btn-secondary">Cancel</a>
     </div>
 </form>
+<script>
+document.getElementById('fetch-btn').onclick = function() {
+        const isbn = document.getElementById('isbn').value.trim();
+        if (!isbn) return;
+        fetch(`/api/fetch_book_info?isbn=${isbn}`)
+            .then(r => r.json())
+            .then(data => {
+                if (data.error) { alert(data.error); return; }
+                document.getElementById('title').value = data.title || '';
+                document.getElementById('author').value = data.author || '';
+                document.getElementById('year').value = data.year || '';
+                document.getElementById('description').value = data.description || '';
+            });
+};
+</script>
 {% endblock %}
