@@ -1,0 +1,21 @@
+body {
+    background-color: #f8f9fa;
+}
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+.table {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.btn-primary, .navbar-primary {
+    background: linear-gradient(90deg, #007bff 60%, #00c6ff 100%);
+    border: none;
+}
+.btn-warning {
+    color: #fff;
+}
+.btn-danger {
+    color: #fff;
+}
