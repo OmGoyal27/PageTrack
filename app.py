@@ -3,6 +3,8 @@ import json
 import os
 import requests
 from flask import Flask, render_template, request, redirect, url_for, jsonify
+import shutil
+from datetime import datetime
 
 
 app = Flask(__name__)
@@ -16,7 +18,13 @@ def save_books(books):
     with open(BOOKS_FILE, 'w', encoding='utf-8') as f:
         json.dump(books, f, indent=2, ensure_ascii=False)
 
-
+def backup_database():
+    now = datetime.now().strftime('%Y%m%d_%H%M%S')
+    backup_dir = os.path.join(os.path.dirname(__file__), 'backups')
+    os.makedirs(backup_dir, exist_ok=True)
+    backup_file = os.path.join(backup_dir, f"{now}_books_backup.json")
+    shutil.copy2(BOOKS_FILE, backup_file)
+    print(f"Database backed up to {backup_file}.")
 
 
 @app.route('/')
@@ -92,6 +100,10 @@ def delete_book(book_id):
     save_books(new_books)
     return redirect(url_for('index'))
 
+@app.route('/backup', methods=['POST'])
+def backup():
+    backup_database()
+    return jsonify({'status': 'Backup created successfully'}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
