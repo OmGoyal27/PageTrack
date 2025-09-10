@@ -6,7 +6,6 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 import shutil
 from datetime import datetime
 
-
 app = Flask(__name__)
 BOOKS_FILE = os.path.join(os.path.dirname(__file__), 'database', 'books.json')
 
@@ -26,12 +25,10 @@ def backup_database():
     shutil.copy2(BOOKS_FILE, backup_file)
     print(f"Database backed up to {backup_file}.")
 
-
 @app.route('/')
 def index():
     books = load_books()
     return render_template('index.html', books=books)
-
 
 @app.route('/add', methods=['GET', 'POST'])
 def add_book():
@@ -56,7 +53,6 @@ def add_book():
         return redirect(url_for('index'))
     return render_template('add_book.html')
 
-
 @app.route('/edit/<int:book_id>', methods=['GET', 'POST'])
 def edit_book(book_id):
     books = load_books()
@@ -72,6 +68,7 @@ def edit_book(book_id):
         save_books(books)
         return redirect(url_for('index'))
     return render_template('edit_book.html', book=book)
+
 @app.route('/api/fetch_book_info')
 def fetch_book_info():
     isbn = request.args.get('isbn', '').strip()
@@ -91,7 +88,6 @@ def fetch_book_info():
         'year': info.get('publishedDate', '')[:4],
         'description': info.get('description', '')
     })
-
 
 @app.route('/delete/<int:book_id>', methods=['POST'])
 def delete_book(book_id):
