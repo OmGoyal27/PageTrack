@@ -53,6 +53,29 @@ Then open your browser and go to `http://127.0.0.1:5000/`.
 - Backups of your book database are stored in the `backups/` folder as JSON files.
 - The main database is `database/books.json`.
 
+
+## Deployment
+
+### Deploying with Docker
+
+1. **Build the Docker image:**
+  ```powershell
+  docker build -t pagetrack .
+  ```
+
+2. **Run the Docker container:**
+  ```powershell
+  docker run -d -p 7000:7000 --name pagetrack pagetrack
+  ```
+
+3. **Access the app:**
+  Open your browser and go to `http://localhost:7000/`.
+
+#### Notes
+- The app runs on port 7000 inside the container (see `Dockerfile`).
+- Make sure your `requirements.txt` is up to date with all dependencies.
+- The container uses Gunicorn for production-ready serving of the Flask app.
+
 ## License
 See `LICENCE.txt` for license information.
 
